@@ -1,0 +1,23 @@
+package views
+
+import "github.com/maxpaulus43/go-pocketbase-htmx-templ-tailwind/models"
+import "fmt"
+
+templ Todos(todos []models.Todo) {
+	@Index() {
+		<div id="todos" class="w-48 bg-purple-700 p-2 rounded-md flex flex-col gap-1">
+			for _, t := range todos {
+				<div class="bg-purple-300 p-1 rounded-sm flex justify-between">
+					<span class="flex-grow">{ t.Content }</span>
+					<input
+						type="checkbox"
+						checked?={ t.IsComplete }
+						hx-post={ fmt.Sprintf("/check/%s", t.Id) }
+						hx-target="#todos"
+						hx-swap="outerHTML"
+					/>
+				</div>
+			}
+		</div>
+	}
+}
