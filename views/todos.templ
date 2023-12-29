@@ -7,7 +7,7 @@ templ Todos(todos []models.Todo) {
 	@Index() {
 		<div id="todos" class="w-48 bg-purple-700 p-2 rounded-md flex flex-col gap-1">
 			for _, t := range todos {
-				<div class="bg-purple-300 p-1 rounded-sm flex justify-between">
+				<div class={ "bg-purple-300 p-1 rounded-sm flex justify-between", templ.KV("line-through", t.IsComplete) }>
 					<span class="flex-grow">{ t.Content }</span>
 					<input
 						type="checkbox"

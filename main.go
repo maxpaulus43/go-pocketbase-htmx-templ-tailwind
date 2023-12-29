@@ -9,7 +9,6 @@ import (
 	"github.com/labstack/echo/v5"
 	"github.com/maxpaulus43/go-pocketbase-htmx-templ-tailwind/models"
 	"github.com/maxpaulus43/go-pocketbase-htmx-templ-tailwind/views"
-	"github.com/pocketbase/dbx"
 	"github.com/pocketbase/pocketbase"
 	"github.com/pocketbase/pocketbase/apis"
 	"github.com/pocketbase/pocketbase/core"
@@ -32,9 +31,8 @@ func main() {
 		})
 
 		e.Router.GET("/todos", func(c echo.Context) error {
-			query := app.Dao().RecordQuery(TODOS).
-				AndWhere(dbx.HashExp{"is_complete": false}).
-				Limit(10)
+			query := app.Dao().RecordQuery(TODOS).Limit(10)
+
 			todos := []models.Todo{}
 			if err := query.All(&todos); err != nil {
 				return err
@@ -52,6 +50,7 @@ func main() {
 			if err := app.Dao().SaveRecord(record); err != nil {
 				return err
 			}
+			// TODO make this return just the todo that was changed
 			return c.Redirect(http.StatusFound, "/todos")
 		})
 
