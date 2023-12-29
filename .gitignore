@@ -19,3 +19,9 @@
 
 # Go workspace file
 go.work
+
+tailwindcss
+main
+pb_data
+public/css/tailwind.css
+*_templ.go

@@ -1,0 +1,19 @@
+package views
+
+templ Index() {
+	<html lang="en">
+		<head>
+			<title>go-pocketbase-htmx-templ-tailwind</title>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1"/>
+			<link href="css/tailwind.css" rel="stylesheet"/>
+		</head>
+		<body class="bg-red-300">
+			<ul class="flex flex-col gap-1">
+				@row("golang")
+				@row("pocketbase")
+				@row("htmx")
+			</ul>
+		</body>
+	</html>
+}
