@@ -1,6 +1,11 @@
 # go-pocketbase-htmx-templ-tailwind
 go pocketbase htmx templ tailwind template
 
+- [go docs](https://go.dev/doc/)
+- [pocketbase docs](https://pocketbase.io/docs/)
+- [templ docs](https://github.com/a-h/templ)
+- [tailwind docs](https://tailwindcss.com/docs/installation)
+
 ## Prereqs
 
 1. install golang 1.21
