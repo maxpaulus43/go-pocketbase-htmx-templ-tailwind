@@ -7,8 +7,8 @@ import (
 
 	"github.com/a-h/templ"
 	"github.com/labstack/echo/v5"
-	"github.com/maxpaulus43/go-pocketbase-htmx-templ-tailwind/models"
-	"github.com/maxpaulus43/go-pocketbase-htmx-templ-tailwind/views"
+	"github.com/maxpaulus43/go-pocketbase-htmx-templ-tailwind/model"
+	"github.com/maxpaulus43/go-pocketbase-htmx-templ-tailwind/view"
 	"github.com/pocketbase/pocketbase"
 	"github.com/pocketbase/pocketbase/apis"
 	"github.com/pocketbase/pocketbase/core"
@@ -27,17 +27,17 @@ func main() {
 
 	app.OnBeforeServe().Add(func(e *core.ServeEvent) error {
 		e.Router.GET("/", func(c echo.Context) error {
-			return render(views.Index(), c)
+			return render(view.Index(), c)
 		})
 
 		e.Router.GET("/todos", func(c echo.Context) error {
 			query := app.Dao().RecordQuery(TODOS).Limit(10)
 
-			todos := []models.Todo{}
+			todos := []model.Todo{}
 			if err := query.All(&todos); err != nil {
 				return err
 			}
-			return render(views.Todos(todos), c)
+			return render(view.Todos(todos), c)
 		})
 
 		e.Router.POST("/check/:id", func(c echo.Context) error {

@@ -1,9 +1,9 @@
-package views
+package view
 
-import "github.com/maxpaulus43/go-pocketbase-htmx-templ-tailwind/models"
+import "github.com/maxpaulus43/go-pocketbase-htmx-templ-tailwind/model"
 import "fmt"
 
-templ Todos(todos []models.Todo) {
+templ Todos(todos []model.Todo) {
 	@Index() {
 		<div id="todos" class="w-48 bg-purple-700 p-2 rounded-md flex flex-col gap-1">
 			for _, t := range todos {

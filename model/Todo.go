@@ -1,4 +1,4 @@
-package models
+package model
 
 type Todo struct {
 	Id         string `db:"id"`
