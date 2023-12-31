@@ -1,0 +1,18 @@
+package layout
+
+templ Base() {
+	<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<title>go-pocketbase-htmx-templ-tailwind</title>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1"/>
+			<meta name="description" content="golang pocketbase htmx templ tailwind auth template"/>
+			<link href="css/tailwind.css" rel="stylesheet"/>
+			<script src="https://unpkg.com/htmx.org@1.9.10"></script>
+		</head>
+		<body class="bg-purple-200">
+			{ children... }
+		</body>
+	</html>
+}

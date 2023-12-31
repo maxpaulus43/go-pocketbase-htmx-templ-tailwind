@@ -53,3 +53,7 @@ EXPOSE 8080
 # start PocketBase
 CMD ["/pb/pocketbase", "serve", "--http=0.0.0.0:8080"]
 ```
+
+save this urls:
+- https://git.sunshine.industries/efim/go-ssr-pocketbase-oauth-attempt
+- https://www.reddit.com/r/pocketbase/comments/18lhedp/jwt_auth_with_htmx/

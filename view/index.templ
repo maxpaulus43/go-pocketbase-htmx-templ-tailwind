@@ -1,16 +1,19 @@
 package view
 
-templ Index() {
-	<html lang="en">
-		<head>
-			<title>go-pocketbase-htmx-templ-tailwind</title>
-			<meta charset="UTF-8"/>
-			<meta name="viewport" content="width=device-width, initial-scale=1"/>
-			<link href="css/tailwind.css" rel="stylesheet"/>
-			<script src="https://unpkg.com/htmx.org@1.9.10"></script>
-		</head>
-		<body class="bg-purple-200 flex justify-center items-center">
-			{ children... }
-		</body>
-	</html>
+import "github.com/maxpaulus43/go-pocketbase-htmx-templ-tailwind/view/layout"
+
+templ Index(isLoggedIn bool) {
+	@layout.Base() {
+		<h1>Hello From the Index </h1>
+		<div class="flex flex-col">
+			if (!isLoggedIn) {
+				<a href="/login">Login</a>
+				<a href="/todos">See Todos</a>
+			} else {
+				<form action="/logout" method="post">
+					<button hx-post="/logout">Logout</button>
+				</form>
+			}
+		</div>
+	}
 }

@@ -1,10 +1,11 @@
-package view
+package todos
 
 import "github.com/maxpaulus43/go-pocketbase-htmx-templ-tailwind/model"
+import "github.com/maxpaulus43/go-pocketbase-htmx-templ-tailwind/view/layout"
 import "fmt"
 
 templ Todos(todos []model.Todo) {
-	@Index() {
+	@layout.Base() {
 		<div id="todos" class="w-48 bg-purple-700 p-2 rounded-md flex flex-col gap-1">
 			for _, t := range todos {
 				<div class={ "bg-purple-300 p-1 rounded-sm flex justify-between", templ.KV("line-through", t.IsComplete) }>
@@ -12,7 +13,7 @@ templ Todos(todos []model.Todo) {
 					<input
 						type="checkbox"
 						checked?={ t.IsComplete }
-						hx-post={ fmt.Sprintf("/check/%s", t.Id) }
+						hx-post={ fmt.Sprintf("/todos/toggle/%s", t.Id) }
 						hx-target="#todos"
 						hx-swap="outerHTML"
 					/>
