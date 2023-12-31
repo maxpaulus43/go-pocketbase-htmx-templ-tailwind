@@ -8,11 +8,11 @@ templ Index(isLoggedIn bool) {
 		<div class="flex flex-col">
 			if (!isLoggedIn) {
 				<a href="/login">Login</a>
-				<a href="/todos">See Todos</a>
 			} else {
 				<form action="/logout" method="post">
-					<button hx-post="/logout">Logout</button>
+					<button>Logout</button>
 				</form>
+				<a href="/todos">See Todos</a>
 			}
 		</div>
 	}
