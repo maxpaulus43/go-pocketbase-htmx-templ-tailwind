@@ -4,7 +4,7 @@ import "github.com/maxpaulus43/go-pocketbase-htmx-templ-tailwind/model"
 import "github.com/maxpaulus43/go-pocketbase-htmx-templ-tailwind/view/layout"
 import "fmt"
 
-templ Todos(todos []model.Todo) {
+templ Index(todos []model.Todo) {
 	@layout.Base() {
 		<div id="todos" class="w-48 bg-purple-700 p-2 rounded-md flex flex-col gap-1">
 			for _, t := range todos {

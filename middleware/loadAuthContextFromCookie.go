@@ -1,7 +1,10 @@
 package middleware
 
 import (
+	"context"
+
 	"github.com/labstack/echo/v5"
+	"github.com/maxpaulus43/go-pocketbase-htmx-templ-tailwind/utils"
 	"github.com/pocketbase/pocketbase/apis"
 	"github.com/pocketbase/pocketbase/core"
 	"github.com/pocketbase/pocketbase/tokens"
@@ -31,6 +34,8 @@ func LoadAuthContextFromCookie(app core.App) echo.MiddlewareFunc {
 				if err == nil && admin != nil {
 					// "authenticate" the admin
 					c.Set(apis.ContextAdminKey, admin)
+					utils.SetRequestContextValue(c, "pb_auth", tokenCookie.Value)
+					c.SetRequest(c.Request().WithContext(context.WithValue(c.Request().Context(), "pb_auth", tokenCookie.Value)))
 				}
 			case tokens.TypeAuthRecord:
 				record, err := app.Dao().FindAuthRecordByToken(
@@ -40,6 +45,7 @@ func LoadAuthContextFromCookie(app core.App) echo.MiddlewareFunc {
 				if err == nil && record != nil {
 					// "authenticate" the app user
 					c.Set(apis.ContextAuthRecordKey, record)
+					utils.SetRequestContextValue(c, "pb_auth", tokenCookie.Value)
 				}
 			}
 
