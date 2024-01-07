@@ -51,7 +51,6 @@ func (h LoginHandler) PostLogin(c echo.Context) error {
 	})
 
 	return c.Redirect(http.StatusFound, "/")
-
 }
 
 func (h LoginHandler) PostLogout(c echo.Context) error {

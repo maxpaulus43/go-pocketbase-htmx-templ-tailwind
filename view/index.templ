@@ -12,7 +12,7 @@ templ Index(isLoggedIn bool) {
 				<form action="/logout" method="post">
 					<button>Logout</button>
 				</form>
-				<a href="/todos">See Todos</a>
+				<div hx-get="/todos" hx-trigger="load"></div>
 			}
 		</div>
 	}

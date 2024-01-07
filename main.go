@@ -30,7 +30,7 @@ func main() {
 		loginHandler := controller.NewLoginHandler(app)
 		e.Router.GET("/login", loginHandler.GetLogin)
 		e.Router.POST("/login", loginHandler.PostLogin)
-		mustBeLoggedInRoutes.POST("/logout", loginHandler.PostLogin)
+		mustBeLoggedInRoutes.POST("/logout", loginHandler.PostLogout)
 
 		todoHandler := controller.NewTodoHandler(app)
 		redirectToLoginRoutes.GET("/todos", todoHandler.GetTodos)

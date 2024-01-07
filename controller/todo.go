@@ -34,8 +34,7 @@ func (h TodoHandler) GetTodos(c echo.Context) error {
 	if err := q.All(&todosList); err != nil {
 		return err
 	}
-	return utils.Render(todos.Index(todosList), c)
-
+	return utils.Render(todos.Todos(todosList), c)
 }
 
 func (h TodoHandler) PostToggleTodo(c echo.Context) error {
@@ -53,5 +52,4 @@ func (h TodoHandler) PostToggleTodo(c echo.Context) error {
 		return err
 	}
 	return c.Redirect(http.StatusFound, "/todos")
-
 }
