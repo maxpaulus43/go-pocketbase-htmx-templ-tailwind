@@ -1,0 +1,16 @@
+*_templ.go
+.DS_Store
+.air.toml
+.dockerignore
+.git
+.gitignore
+.tool-versions
+Dockerfile
+LICENSE
+README.md
+main
+pb_data
+public/css/tailwind.css
+tailwindcss
+tmp
+
